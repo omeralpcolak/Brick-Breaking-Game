@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class GameControl : MonoBehaviour
+
+public class GameOver : MonoBehaviour
 {
+    public UnityEngine.UI.Text score;
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        score.text = "Your Score: "+ GameObject.FindObjectOfType<Score>().GetComponent<Score>().returnScore(); ;
     }
 
     // Update is called once per frame
@@ -15,10 +17,8 @@ public class GameControl : MonoBehaviour
     {
         
     }
-
-    public void NextScene()
+    public void ToTheAnaSahne ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene(0);
     }
-
 }

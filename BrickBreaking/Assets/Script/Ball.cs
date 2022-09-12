@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    private bool oyunBasladi = false;
+    private bool gameStart = false;
     private GameObject pedal;
     // Start is called before the first frame update
     void Start()
@@ -15,14 +15,14 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (!oyunBasladi)
+        if (!gameStart)
         {
             transform.position = new Vector3(pedal.transform.position.x, transform.position.y, transform.position.z);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)  && !gameStart)
         {   
-            oyunBasladi = true;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 15f);
+            gameStart = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);
         }
     }
 }

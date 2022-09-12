@@ -7,8 +7,10 @@ public class Button : MonoBehaviour
 {
 
     public void DigerSahne()
-    {
-        SceneManager.LoadScene("SampleScene");
+    {   
+        Brick.sumBrickNumber = 0;
+        GameObject.FindObjectOfType<Score>().GetComponent<Score>().ResetScore();
+        SceneManager.LoadScene("Level1");
         
     }
 }

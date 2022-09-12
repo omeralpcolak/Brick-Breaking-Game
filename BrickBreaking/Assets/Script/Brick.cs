@@ -8,11 +8,13 @@ public class Brick : MonoBehaviour
     public Sprite[] brickSprite;
     private int maxCollisionNumber;
     private int collisionNumber;
+    private Score scoreScript;
     // Start is called before the first frame update
     void Start()
     {
         maxCollisionNumber = brickSprite.Length+ 1;
         sumBrickNumber++;
+        scoreScript = GameObject.FindObjectOfType<Score>().GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class Brick : MonoBehaviour
             
             if (collisionNumber >= maxCollisionNumber)
             {
+                scoreScript.sumScore();
                 sumBrickNumber--;
                 Debug.Log(sumBrickNumber);
 
