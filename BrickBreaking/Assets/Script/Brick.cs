@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public static int sumBrickNumber;
     public Sprite[] brickSprite;
     private int maxCollisionNumber;
     private int collisionNumber;
@@ -11,6 +12,7 @@ public class Brick : MonoBehaviour
     void Start()
     {
         maxCollisionNumber = brickSprite.Length+ 1;
+        sumBrickNumber++;
     }
 
     // Update is called once per frame
@@ -27,6 +29,14 @@ public class Brick : MonoBehaviour
             
             if (collisionNumber >= maxCollisionNumber)
             {
+                sumBrickNumber--;
+                Debug.Log(sumBrickNumber);
+
+                if (sumBrickNumber <= 0)
+                {
+                    GameObject.FindObjectOfType<GameControl>().NextScene();
+                }
+
                 Destroy(gameObject);
             } else
             {
